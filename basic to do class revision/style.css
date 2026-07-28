@@ -1,0 +1,91 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#todo {
+    width: 420px;
+    background: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+#todo input {
+    width: 73%;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    outline: none;
+    font-size: 16px;
+}
+
+#todo input:focus {
+    border-color: #667eea;
+}
+
+#todo > button {
+    width: 24%;
+    padding: 12px;
+    margin-left: 3%;
+    border: none;
+    border-radius: 6px;
+    background: #667eea;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#todo > button:hover {
+    background: #4f5bd5;
+}
+
+#todo div {
+    margin-top: 20px;
+}
+
+#todo div div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f4f4f4;
+    padding: 12px 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    transition: 0.3s;
+}
+
+#todo div div:hover {
+    background: #ececec;
+}
+
+#todo p {
+    font-size: 16px;
+    color: #333;
+    word-break: break-word;
+}
+
+#todo div div button {
+    background: #e74c3c;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#todo div div button:hover {
+    background: #c0392b;
+}
