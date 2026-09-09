@@ -1,16 +1,10 @@
 import React, { useState, useEffect, useRef, useMemo, useCallback } from "react";
-
-// ==========================================
 // 1. CUSTOM HOOK (Encapsulates API Logic)
-// Demonstrates: useState, useEffect, useCallback
-// ==========================================
 function useWeather(initialCity = "Chandigarh") {
   const [city, setCity] = useState(initialCity);
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-
-  // useCallback: Stable function reference across renders
   const fetchWeather = useCallback(async (cityName) => {
     if (!cityName.trim()) return;
 
@@ -18,7 +12,6 @@ function useWeather(initialCity = "Chandigarh") {
     setError(null);
 
     try {
-      // 1. Geocoding coordinates (Free Open-Meteo API - No key required)
       const geoRes = await fetch(
         `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(
           cityName
@@ -61,10 +54,7 @@ function useWeather(initialCity = "Chandigarh") {
   return { data, loading, error, setCity };
 }
 
-// ==========================================
 // 2. REUSABLE CARD COMPONENT
-// Demonstrates: Component Composition (children)
-// ==========================================
 function Card({ children }) {
   return (
     <div
@@ -85,10 +75,8 @@ function Card({ children }) {
   );
 }
 
-// ==========================================
+
 // 3. SEARCH BAR COMPONENT
-// Demonstrates: useRef (DOM focus) & Lifting State Up
-// ==========================================
 function SearchBar({ onSearch }) {
   const [inputVal, setInputVal] = useState("");
   const inputRef = useRef(null);
