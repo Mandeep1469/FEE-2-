@@ -1,0 +1,185 @@
+body, html { 
+    margin: 0; 
+    padding: 0; 
+    width: 100vw; 
+    height: 100vh; 
+    overflow: hidden; 
+    font-family: 'Segoe UI', -apple-system, sans-serif; 
+    background-color: #000; 
+} 
+
+.screen { 
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    box-sizing: border-box; 
+    display: none; 
+} 
+
+.game-board { 
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    grid-template-rows: 1fr 1fr; 
+    z-index: 1; 
+} 
+
+.zone { 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1); 
+    cursor: pointer; 
+    border: 4px solid #000; 
+} 
+
+.text { 
+    font-size: 1.8rem; 
+    font-weight: 900; 
+    color: white; 
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.7); 
+    text-align: center; 
+    pointer-events: none; 
+} 
+
+.zone-1 { background-color: #ff0055; } 
+.zone-2 { background-color: #00ffcc; } 
+.zone-3 { background-color: #ffcc00; } 
+.zone-4 { background-color: #9900ff; } 
+
+.game-board:has(.zone-1:hover) { grid-template-columns: 0.3fr 1.7fr; grid-template-rows: 1.7fr 0.3fr; } 
+.game-board:has(.zone-2:hover) { grid-template-columns: 1.7fr 0.3fr; grid-template-rows: 0.3fr 1.7fr; } 
+.game-board:has(.zone-3:hover) { grid-template-columns: 0.3fr 1.7fr; grid-template-rows: 0.3fr 1.7fr; } 
+.game-board:has(.zone-4:hover) { grid-template-columns: 1.7fr 0.3fr; grid-template-rows: 1.7fr 0.3fr; } 
+
+.fake-target { 
+    position: absolute; 
+    width: 210px; 
+    height: 70px; 
+    display: none; 
+    justify-content: center; 
+    align-items: center; 
+    border: none; 
+    border-radius: 15px; 
+    background: linear-gradient(45deg,#00bfff,#0066ff); 
+    color: white; 
+    font-size: 18px; 
+    font-weight: bold; 
+    cursor: pointer; 
+    box-shadow: 0 12px 25px rgba(0,0,0,.35); 
+    transition: .25s; 
+    z-index: 100; 
+} 
+
+.fake-target:hover { 
+    transform: scale(1.08); 
+    box-shadow: 0 18px 35px rgba(0,0,0,.45); 
+} 
+
+.fake-target:active { 
+    transform: scale(.95); 
+} 
+
+#target5 { top: 20%; left: 20%; } 
+#target6 { top: 60%; right: 15%; } 
+#target7 { bottom: 25%; left: 35%; } 
+#target8 { top: 40%; left: 65%; } 
+#target9 { bottom: 15%; left: 15%; } 
+#target10 { 
+    top: 45%; 
+    left: 45%; 
+    background: red; 
+    color: white; 
+    animation: pulse 0.5s infinite alternate; 
+} 
+
+@keyframes pulse { 
+    to { transform: scale(1.1); } 
+} 
+
+.crash-terminal { 
+    background-color: #050505; 
+    color: #00ff33; 
+    font-family: 'Courier New', Courier, monospace; 
+    justify-content: center; 
+    align-items: center; 
+    z-index: 2; 
+    padding: 40px; 
+} 
+
+.terminal-content { 
+    max-width: 650px; 
+    width: 100%; 
+} 
+
+.crash-title { 
+    color: #ff3333; 
+    font-size: 2.2rem; 
+    text-align: center; 
+    margin-bottom: 5px; 
+} 
+
+.crash-sub { 
+    color: #888; 
+    text-align: center; 
+    margin-bottom: 40px; 
+} 
+
+.loading-container { 
+    background: #111; 
+    border: 1px solid #333; 
+    padding: 30px; 
+    border-radius: 8px; 
+} 
+
+.spinner { 
+    width: 40px; 
+    height: 40px; 
+    border: 3px solid rgba(0, 255, 51, 0.1); 
+    border-top: 3px solid #00ff33; 
+    border-radius: 50%; 
+    margin: 0 auto 30px auto; 
+    animation: spin 1s linear infinite; 
+} 
+
+@keyframes spin { 
+    to { transform: rotate(360deg); } 
+} 
+
+.load-step { 
+    font-size: 1.1rem; 
+    margin: 15px 0; 
+    display: none; 
+} 
+
+/* NEW STYLES FOR THE MEME ENDSCREEN */
+.final-screen {
+    background-color: #000;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 3;
+}
+
+.meme-container {
+    text-align: center;
+}
+
+.funny-pic { 
+    max-width: 90vw;
+    max-height: 70vh;
+    border: 5px solid #fff; 
+    border-radius: 10px;
+    box-shadow: 0 0 30px rgba(255,255,255,0.2);
+}
+
+.win-text {
+    color: white;
+    font-size: 2.5rem;
+    margin-top: 20px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}

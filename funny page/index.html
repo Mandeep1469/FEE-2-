@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Ultimate Desktop Chase</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+<body>
+
+    <!-- SCREEN 1: THE GAME BOARD -->
+    <div id="gameBoard" class="screen game-board">
+        <div class="zone zone-1" onclick="registerClick()"><span class="text">👉 CLICK HERE TO START 👈</span></div>
+        <div class="zone zone-2" onclick="registerClick()"><span class="text">❌ NO, WAIT! OVER HERE! ❌</span></div>
+        <div class="zone zone-3" onclick="registerClick()"><span class="text">🔥 QUICK! CLICK ME! 🔥</span></div>
+        <div class="zone zone-4" onclick="registerClick()"><span class="text">💎 LAST CHANCE! CLICK! 💎</span></div>
+        
+        <button id="target5" class="fake-target" onclick="showNextTarget(6, this, event)">CLICK HERE!</button>
+        <button id="target6" class="fake-target" onclick="showNextTarget(7, this, event)">CLICK AGAIN</button>
+        <button id="target7" class="fake-target" onclick="showNextTarget(8, this, event)">ALMOST THERE!</button>
+        <button id="target8" class="fake-target" onclick="showNextTarget(9, this, event)">JUST A BIT MORE!</button>
+        <button id="target9" class="fake-target" onclick="showNextTarget(10, this, event)">ONE MORE!</button>
+        <button id="target10" class="fake-target" onclick="switchToTerminal()">🎯 FINAL CLICK!</button>
+    </div>
+
+    <!-- SCREEN 2: THE CRASH TERMINAL -->
+    <div id="crashTerminal" class="screen crash-terminal">
+        <div class="terminal-content">
+            <h1 class="crash-title">🚨 SORRY, SYSTEM CRASHED! 🚨</h1>
+            <p class="crash-sub">Too many rapid inputs. Initializing memory recovery protocol...</p>
+            <div class="loading-container">
+                <div class="spinner"></div>
+                <div id="step1" class="load-step">⏳ Step 1/5: Compiling broken brain cells... [DONE]</div>
+                <div id="step2" class="load-step">⚙️ Step 2/5: Overclocking your mouse cursor... [DONE]</div>
+                <div id="step3" class="load-step">🗑️ Step 3/5: Deleting system files to save space... [DONE]</div>
+                <div id="step4" class="load-step">🐱 Step 4/5: Asking a local cat for expert advice... [DONE]</div>
+                <div id="step5" class="load-step">🔌 Step 5/5: Unplugging the internet and plugging it back in... [DONE]</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCREEN 3: THE MEME WIN SCREEN -->
+    <div id="finalScreen" class="screen final-screen">
+        <div class="meme-container">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR417wbxEv2COeWfcFGqINMOKO7cUX_tnBrjDy2xUs_i-KpFWz6jY2wyp0i&s=10" alt="Mogambo Khush Hua" class="funny-pic">
+            <h1 class="win-text">Mogambo Khush Hua!</h1>
+        </div>
+    </div>
+
+</body>
+</html>

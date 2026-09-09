@@ -1,0 +1,157 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif, sans-serif;
+}
+
+body{
+    background-image:url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQFAIQMgCujj6FP1zhTKO6wao5jG8rq923RXWzBfg9BDrsBeyKvA-XXUz2&s=10");
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+    min-height:100vh;
+}
+
+.navbar{
+    width:100%;
+    background:#fbfbfb;
+    color:rgb(21, 19, 19);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 40px;
+}
+
+.navbar h2{
+    color:rgb(11, 10, 10);
+}
+
+.navbar ul{
+    list-style:none;
+    display:flex;
+    align-items:center;
+}
+
+.navbar ul li{
+    margin-left:30px;
+}
+
+.navbar ul li a{
+    color:rgb(9, 9, 9);
+    text-decoration:none;
+}
+
+.notification{
+    position:relative;
+    font-size:28px;
+    cursor:pointer;
+    margin-left:35px;
+}
+
+.badge{
+    position:absolute;
+    top:-6px;
+    right:-4px;
+    width:18px;
+    height:18px;
+    background:red;
+    color:white;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:10px;
+    font-weight:bold;
+}
+
+.login-box{
+    width:380px;
+    background:rgba(236, 232, 232, 0.5);
+    margin:70px auto;
+    padding:30px;
+    border-radius:10px;
+    text-align:center;
+    box-shadow:0 0 12px black;
+}
+
+.login-box h2{
+    margin-bottom:25px;
+    color: black;
+}
+
+input{
+    width:100%;
+    padding:12px;
+    margin-bottom:20px;
+}
+
+.password{
+    position:relative;
+}
+
+.heart{
+    position:absolute;
+    right:12px;
+    top:10px;
+    color:red;
+    cursor:pointer;
+    font-size:18px;
+}
+
+.tooltip{
+    visibility:hidden;
+    position:absolute;
+    top:30px;
+    right:0;
+    background:black;
+    color:white;
+    padding:5px 10px;
+    border-radius:5px;
+
+    font-size:12px;
+
+    white-space:nowrap;
+}
+
+.heart:hover .tooltip{
+    visibility:visible;
+}
+
+button{
+    width:100%;
+    padding:12px;
+    background:lightblue;
+    color:black;
+    border:none;
+    cursor:pointer;
+    font-size:16px;
+}
+
+button:hover{
+    background:darkblue;
+}
+
+.message-icon{
+    position: fixed;
+    bottom:20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 0 10px black;
+    transition: 0.2s;
+}
+.message-icon img{
+    width:35px;
+    height: 35px;
+}
+.message-icon:hover{
+    transform:scale(1.1);
+    box-shadow: 0 0 20px gray;
+}
