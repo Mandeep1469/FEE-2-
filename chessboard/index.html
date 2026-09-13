@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chessboard</title>
+  <style>
+    :root {
+      --light-square: #f0d9b5;
+      --dark-square: #b58863;
+      --ink: #2c2118;
+      --page: #f7f4ef;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      display: grid;
+      place-items: center;
+      padding: 32px 20px;
+      color: var(--ink);
+      background: var(--page);
+      font-family: Georgia, 'Times New Roman', serif;
+    }
+
+    .chess-app { width: min(92vw, 650px); }
+
+    header {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 20px;
+    }
+
+    h1 { margin: 0; font-size: clamp(2rem, 6vw, 3.5rem); font-weight: 500; letter-spacing: -.05em; }
+    .subtitle { margin: 5px 0 0; color: #786b60; font-family: system-ui, sans-serif; font-size: .9rem; }
+
+    .board-wrap {
+      padding: clamp(8px, 1.6vw, 14px);
+      background: #35291f;
+      box-shadow: 0 16px 40px #2c211840;
+    }
+
+    .chessboard {
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      grid-template-rows: repeat(8, 1fr);
+      aspect-ratio: 1;
+      border: 1px solid #201811;
+    }
+
+    .square {
+      display: grid;
+      place-items: center;
+      position: relative;
+      font-size: clamp(1.7rem, 7vw, 4.7rem);
+      line-height: 1;
+      cursor: default;
+    }
+    .light { background: var(--light-square); }
+    .dark { background: var(--dark-square); }
+    .white-piece { color: #fffdf9; text-shadow: 0 1px 0 #7d7065, 0 2px 3px #5c4c403d; }
+    .black-piece { color: #2b211c; text-shadow: 0 1px 0 #e0cdb87a; }
+
+    .rank, .file {
+      position: absolute;
+      z-index: 1;
+      font: 700 clamp(.55rem, 1.5vw, .75rem)/1 system-ui, sans-serif;
+    }
+    .rank { top: 5px; left: 6px; color: var(--dark-square); }
+    .file { right: 6px; bottom: 5px; color: var(--light-square); }
+    .dark .rank { color: var(--light-square); }
+    .dark .file { color: var(--dark-square); }
+
+    .controls { margin-top: 20px; display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+    .controls span { margin-right: 3px; font: 600 .75rem/1 system-ui, sans-serif; letter-spacing: .1em; text-transform: uppercase; color: #786b60; }
+    .theme {
+      width: 32px;
+      height: 32px;
+      border: 3px solid transparent;
+      border-radius: 50%;
+      cursor: pointer;
+      background: linear-gradient(135deg, var(--theme-light) 50%, var(--theme-dark) 50%);
+      transition: transform .18s, border-color .18s;
+    }
+    .theme:hover, .theme.active { transform: scale(1.12); border-color: var(--ink); }
+    .theme:focus-visible { outline: 2px solid #2c2118; outline-offset: 3px; }
+  </style>
+</head>
+<body>
+  <main class="chess-app">
+    <header>
+      <div>
+        <h1>Chessboard</h1>
+        <p class="subtitle">A classic game, beautifully simple.</p>
+      </div>
+    </header>
+
+    <div class="board-wrap">
+      <div class="chessboard" aria-label="Starting position of a chess game">
+        <div class="square light"><b class="rank">8</b><span class="black-piece">♜</span></div><div class="square dark"><span class="black-piece">♞</span></div><div class="square light"><span class="black-piece">♝</span></div><div class="square dark"><span class="black-piece">♛</span></div><div class="square light"><span class="black-piece">♚</span></div><div class="square dark"><span class="black-piece">♝</span></div><div class="square light"><span class="black-piece">♞</span></div><div class="square dark"><span class="black-piece">♜</span></div>
+        <div class="square dark"><b class="rank">7</b><span class="black-piece">♟</span></div><div class="square light"><span class="black-piece">♟</span></div><div class="square dark"><span class="black-piece">♟</span></div><div class="square light"><span class="black-piece">♟</span></div><div class="square dark"><span class="black-piece">♟</span></div><div class="square light"><span class="black-piece">♟</span></div><div class="square dark"><span class="black-piece">♟</span></div><div class="square light"><span class="black-piece">♟</span></div>
+        <div class="square light"><b class="rank">6</b></div><div class="square dark"></div><div class="square light"></div><div class="square dark"></div><div class="square light"></div><div class="square dark"></div><div class="square light"></div><div class="square dark"></div>
+        <div class="square dark"><b class="rank">5</b></div><div class="square light"></div><div class="square dark"></div><div class="square light"></div><div class="square dark"></div><div class="square light"></div><div class="square dark"></div><div class="square light"></div>
+        <div class="square light"><b class="rank">4</b></div><div class="square dark"></div><div class="square light"></div><div class="square dark"></div><div class="square light"></div><div class="square dark"></div><div class="square light"></div><div class="square dark"></div>
+        <div class="square dark"><b class="rank">3</b></div><div class="square light"></div><div class="square dark"></div><div class="square light"></div><div class="square dark"></div><div class="square light"></div><div class="square dark"></div><div class="square light"></div>
+        <div class="square light"><b class="rank">2</b><span class="white-piece">♙</span></div><div class="square dark"><span class="white-piece">♙</span></div><div class="square light"><span class="white-piece">♙</span></div><div class="square dark"><span class="white-piece">♙</span></div><div class="square light"><span class="white-piece">♙</span></div><div class="square dark"><span class="white-piece">♙</span></div><div class="square light"><span class="white-piece">♙</span></div><div class="square dark"><span class="white-piece">♙</span></div>
+        <div class="square dark"><b class="rank">1</b><span class="white-piece">♖</span><b class="file">a</b></div><div class="square light"><span class="white-piece">♘</span><b class="file">b</b></div><div class="square dark"><span class="white-piece">♗</span><b class="file">c</b></div><div class="square light"><span class="white-piece">♕</span><b class="file">d</b></div><div class="square dark"><span class="white-piece">♔</span><b class="file">e</b></div><div class="square light"><span class="white-piece">♗</span><b class="file">f</b></div><div class="square dark"><span class="white-piece">♘</span><b class="file">g</b></div><div class="square light"><span class="white-piece">♖</span><b class="file">h</b></div>
+      </div>
+    </div>
+
+    <nav class="controls" aria-label="Chessboard color themes">
+      <span>Board colors</span>
+      <button class="theme active" style="--theme-light:#f0d9b5;--theme-dark:#b58863" data-light="#f0d9b5" data-dark="#b58863" aria-label="Classic theme"></button>
+      <button class="theme" style="--theme-light:#e9edf1;--theme-dark:#698aa5" data-light="#e9edf1" data-dark="#698aa5" aria-label="Ocean theme"></button>
+      <button class="theme" style="--theme-light:#eeeed2;--theme-dark:#769656" data-light="#eeeed2" data-dark="#769656" aria-label="Forest theme"></button>
+      <button class="theme" style="--theme-light:#f3e5f5;--theme-dark:#9b6ba6" data-light="#f3e5f5" data-dark="#9b6ba6" aria-label="Plum theme"></button>
+    </nav>
+  </main>
+
+  <script>
+    document.querySelectorAll('.theme').forEach(button => {
+      button.addEventListener('click', () => {
+        document.documentElement.style.setProperty('--light-square', button.dataset.light);
+        document.documentElement.style.setProperty('--dark-square', button.dataset.dark);
+        document.querySelector('.theme.active').classList.remove('active');
+        button.classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>
